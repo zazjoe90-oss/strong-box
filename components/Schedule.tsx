@@ -1,54 +1,54 @@
 
 import React, { useState } from 'react';
-import { SCHEDULE } from '../constants';
+import { SCHEDULE } from '../constants.tsx';
 
 const Schedule: React.FC = () => {
   const [activeDay, setActiveDay] = useState('Monday');
   const days = Object.keys(SCHEDULE);
 
   return (
-    <section id="classes" className="py-24 bg-zinc-950">
-      <div className="container mx-auto px-4">
+    <section id="classes" className="py-24 bg-zinc-950 bg-grid-pattern relative">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-red-600 font-heading font-bold uppercase tracking-widest mb-2">Class Schedule</h2>
-          <h3 className="text-4xl md:text-5xl font-heading font-black uppercase">Weekly Training</h3>
+          <h3 className="text-4xl md:text-5xl font-heading font-black uppercase text-white">Find Your Time</h3>
         </div>
 
-        <div className="flex justify-center mb-12 gap-2 flex-wrap">
+        <div className="flex justify-center mb-12 gap-3 flex-wrap">
           {days.map((day) => (
             <button
               key={day}
               onClick={() => setActiveDay(day)}
-              className={`px-8 py-3 font-heading font-bold uppercase tracking-tighter transition-all ${
+              className={`px-10 py-4 font-heading font-bold uppercase tracking-widest transition-all skew-x-[-6deg] ${
                 activeDay === day 
-                  ? 'bg-red-600 text-white' 
-                  : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800'
+                  ? 'bg-red-600 text-white shadow-lg shadow-red-600/20 scale-105' 
+                  : 'bg-zinc-900 text-zinc-400 hover:bg-zinc-800 border border-white/5'
               }`}
             >
-              {day}
+              <span className="inline-block skew-x-[6deg]">{day}</span>
             </button>
           ))}
         </div>
 
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="max-w-5xl mx-auto grid gap-4">
           {SCHEDULE[activeDay].map((session, idx) => (
             <div 
               key={idx}
-              className="group bg-zinc-900/50 border-l-4 border-red-600/30 hover:border-red-600 hover:bg-zinc-900 p-6 flex flex-col md:flex-row md:items-center justify-between transition-all"
+              className="group bg-zinc-900/80 backdrop-blur-md border border-white/5 hover:border-red-600 p-6 flex flex-col md:flex-row md:items-center justify-between transition-all duration-300 rounded-sm"
             >
-              <div className="flex items-center gap-6 mb-4 md:mb-0">
-                <span className="text-red-600 font-bold text-xl whitespace-nowrap">{session.time}</span>
+              <div className="flex items-center gap-8 mb-4 md:mb-0">
+                <span className="text-red-600 font-heading font-bold text-3xl tabular-nums">{session.time.split(' ')[0]} <span className="text-xs uppercase align-middle text-zinc-500">{session.time.split(' ')[1]}</span></span>
                 <div>
-                  <h4 className="text-xl font-bold uppercase group-hover:text-red-500 transition-colors">{session.className}</h4>
-                  <p className="text-zinc-400 text-sm">with {session.trainer}</p>
+                  <h4 className="text-2xl font-heading font-bold uppercase tracking-tight group-hover:text-red-500 transition-colors text-white">{session.className}</h4>
+                  <p className="text-zinc-500 font-medium">with <span className="text-zinc-300">{session.trainer}</span></p>
                 </div>
               </div>
-              <div className="flex items-center justify-between md:justify-end gap-6">
-                <span className="px-3 py-1 bg-zinc-800 text-zinc-300 text-xs uppercase font-bold tracking-widest rounded">
+              <div className="flex items-center justify-between md:justify-end gap-10">
+                <span className="px-4 py-1 bg-black/50 border border-white/10 text-red-500 text-xs uppercase font-bold tracking-widest rounded-full">
                   {session.category}
                 </span>
-                <button className="text-sm font-bold uppercase text-red-600 hover:text-white transition-colors">
-                  Book Slot
+                <button className="bg-white text-black hover:bg-red-600 hover:text-white px-8 py-3 font-heading font-bold uppercase text-sm tracking-widest transition-all rounded-sm">
+                  Book
                 </button>
               </div>
             </div>

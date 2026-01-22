@@ -4,7 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strong Box | Performance Fitness</title>
+  <title>Strong Box | Performance Fitness & CrossFit Qatar</title>
+  <meta name="description" content="Strong Box is Qatar's premier strength and conditioning facility. Join our elite community for CrossFit, Olympic Weightlifting, and personal training.">
+  <meta name="theme-color" content="#dc2626">
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,8 +20,36 @@
     .font-heading {
       font-family: 'Oswald', sans-serif;
     }
+    .bg-grid-pattern {
+      background-image: radial-gradient(circle, #ffffff10 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+    .bg-grid-light {
+      background-image: radial-gradient(circle, #00000005 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
     .text-glow-red {
-      text-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
+      text-shadow: 0 0 10px rgba(220, 38, 38, 0.4);
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-marquee {
+      display: flex;
+      animation: marquee 40s linear infinite;
+    }
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #000;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #dc2626;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #b91c1c;
     }
   </style>
 <script type="importmap">
@@ -26,12 +57,13 @@
   "imports": {
     "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "@google/genai": "https://esm.sh/@google/genai@^0.2.1"
   }
 }
 </script>
 </head>
-<body class="bg-black text-white">
+<body class="bg-black text-white selection:bg-red-600 selection:text-white overflow-x-hidden">
   <div id="root"></div>
 </body>
 </html>

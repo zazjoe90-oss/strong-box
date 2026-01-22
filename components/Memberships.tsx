@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { PLANS } from '../constants';
+import { PLANS } from '../constants.tsx';
 
 const Memberships: React.FC = () => {
   return (

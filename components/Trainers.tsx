@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { TRAINERS } from '../constants';
+import { TRAINERS } from '../constants.tsx';
 
 const Trainers: React.FC = () => {
   return (
@@ -51,4 +51,5 @@ const Trainers: React.FC = () => {
   );
 };
 
+// Fixed: Add default export to resolve error in App.tsx
 export default Trainers;
